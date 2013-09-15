@@ -1,0 +1,29 @@
+{
+	"name": "wikidata-build",
+	"description": "Builds of the software for the Wikidata project",
+
+	"version": "0.0.1",
+
+	"author": "Jeroen De Dauw",
+	"maintainers": ["Jeroen De Dauw <jeroendedauw@gmail.com> (http://bn2vs.com)"],
+
+	"repository": {
+		"type": "git",
+		"url": "https://gerrit.wikimedia.org/r/p/mediawiki/extensions/Wikibase.git"
+	},
+
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"grunt-cli": "~0.1.9",
+		"grunt-contrib-jshint": "~0.6.3",
+		"grunt-contrib-watch": "~0.5.3",
+
+		"jshint": "2.x"
+	},
+
+	"main": "index.js",
+
+	"scripts": {
+		"test": "./node_modules/.bin/grunt"
+	}
+}
