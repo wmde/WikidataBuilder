@@ -19,11 +19,14 @@ Requirements:
 
 * [Node.js](http://nodejs.org/) 0.8 or later
 * [npm](https://npmjs.org/) 1.1 or later
+* Suggested: grunt-cli (npm install -g grunt-cli)
 
 Steps to create a build:
 
 * npm install
 * grunt build
+
+In case grunt-cli is not installed, replace "grunt" by "./node_modules/.bin/grunt"
 
 Other commands:
 
