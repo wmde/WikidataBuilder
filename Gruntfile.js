@@ -13,13 +13,13 @@ module.exports = function(grunt) {
 				jshintrc: '.jshintrc'
 			},
 			projectBase: {
-				src: ['*.js', 'package.json']
+				src: ['*.js', '*.json']
 			}
 		},
 
 		watch: {
 			all: {
-				files: ['**/*.js', 'package.json'],
+				files: ['**/*.js', '*.json'],
 				tasks: ['default']
 			},
 			projectBase: {
@@ -33,7 +33,22 @@ module.exports = function(grunt) {
 		'build',
 		'Build the project',
 		function() {
-			grunt.log.writeln('TODO'); // TODO
+			var done = this.async();
+
+			var exec = require('child_process').exec;
+			var composer = exec(
+				'php bin/composer.phar install',
+				function(error, stdout, stderr) {
+					done(error===null);
+				}
+			);
+
+			composer.stdout.on(
+				'data',
+				function (data) {
+					grunt.log.write(data);
+				}
+			);
 		}
 	);
 
