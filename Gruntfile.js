@@ -45,9 +45,7 @@ module.exports = function(grunt) {
 
 			composer.stdout.on(
 				'data',
-				function (data) {
-					grunt.log.write(data);
-				}
+				grunt.log.write
 			);
 		}
 	);
