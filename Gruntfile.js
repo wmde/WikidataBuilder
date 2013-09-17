@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 
 			var exec = require('child_process').exec;
 			var composer = exec(
-				'php bin/composer.phar install',
+				'php bin/composer.phar install  --ansi',
 				function(error, stdout, stderr) {
 					done(error===null);
 				}
