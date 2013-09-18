@@ -4,6 +4,8 @@ Builds of the software for the Wikidata project.
 
 This repo contains both the build tools and the builds.
 
+[![Build Status](https://travis-ci.org/JeroenDeDauw/Wikidata.png?branch=master)](https://travis-ci.org/JeroenDeDauw/Wikidata)
+
 ## Using a build
 
 Requirements:
