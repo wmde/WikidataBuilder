@@ -2,6 +2,7 @@
 
 var WikidataBuilder = require('./../../src/WikidataBuilder');
 var grunt = require('grunt');
+var path = require('path');
 var config = require('./../../config');
 
 var BUILD_DIR = '/tmp/wdb-build/';
@@ -9,11 +10,13 @@ var BUILD_DIR = '/tmp/wdb-build/';
 exports.testCase = {
 
 	'run the build': function(test) {
+		var buildName = Math.round((new Date()).getTime() / 1000).toString();
+
 		var builder = new WikidataBuilder(
 			grunt,
 			{
 				'buildDir': BUILD_DIR,
-				'buildName': Math.round((new Date()).getTime() / 1000).toString(),
+				'buildName': buildName,
 				'resourceDir': config.RESOURCE_DIR,
 				'composerCommand': config.COMPOSER_COMMAND
 			}
@@ -24,7 +27,7 @@ exports.testCase = {
 		builder.once(
 			'done',
 			function() {
-				test.ok(true); // TODO
+				test.ok(grunt.file.exists(path.resolve(BUILD_DIR, buildName, 'vendor')));
 				test.done();
 			}
 		);
