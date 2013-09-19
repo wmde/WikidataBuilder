@@ -27,12 +27,19 @@ module.exports = function(grunt) {
 			},
 			projectBase: {
 				src: ['*.js', '*.json']
+			},
+			all: {
+				src: [
+					'src/**/*.js',
+					'test/**/*.js',
+					'*.json'
+				]
 			}
 		},
 
 		watch: {
 			all: {
-				files: ['**/*.js', '*.json'],
+				files: '<%= jshint.all.src %>',
 				tasks: ['quick']
 			},
 			projectBase: {
