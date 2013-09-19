@@ -10,13 +10,11 @@ var BUILD_DIR = '/tmp/wdb-build/';
 exports.testCase = {
 
 	'run the build': function(test) {
-		var buildName = Math.round((new Date()).getTime() / 1000).toString();
-
 		var builder = new WikidataBuilder(
 			grunt,
 			{
+				'buildName': config.BUILD_NAME,
 				'buildDir': BUILD_DIR,
-				'buildName': buildName,
 				'resourceDir': config.RESOURCE_DIR,
 				'composerCommand': config.COMPOSER_COMMAND
 			}
@@ -27,7 +25,7 @@ exports.testCase = {
 		builder.once(
 			'done',
 			function(error) {
-				var vendorPath = path.resolve(BUILD_DIR, buildName, 'Wikidata', 'vendor');
+				var vendorPath = path.resolve(BUILD_DIR, config.BUILD_NAME, 'Wikidata', 'vendor');
 
 				test.ok(
 					error === null,

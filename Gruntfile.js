@@ -67,7 +67,7 @@ module.exports = function(grunt) {
 				grunt,
 				{
 					'buildDir': config.BUILD_DIR,
-					'buildName': Math.round((new Date()).getTime() / 1000 ).toString(),
+					'buildName': config.BUILD_NAME,
 					'resourceDir': config.RESOURCE_DIR,
 					'composerCommand': config.COMPOSER_COMMAND
 				}
