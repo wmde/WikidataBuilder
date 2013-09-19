@@ -1,12 +1,12 @@
 'use strict';
 
 var path = require('path');
+var GruntDirCopier = require('./GruntDirCopier');
 
-function WikidataBuilder(grunt, done, buildDir) {
+function WikidataBuilder(grunt, done, options) {
 	this._grunt = grunt;
 	this._done = done;
-
-	this._buildDir = buildDir;
+	this._options = options;
 }
 
 WikidataBuilder.prototype = {
@@ -17,21 +17,31 @@ WikidataBuilder.prototype = {
 		this._runComposer(this._done);
 	},
 
+	'_getBuildPath': function() {
+		return path.resolve(
+			this._options.buildDir,
+			this._options.buildName
+		);
+	},
+
 	'_createBuildDir': function() {
-		this._grunt.file.mkdir(this._buildDir);
+		this._grunt.file.mkdir(this._getBuildPath());
 	},
 
 	'_prepareBuildDir': function() {
-		this._grunt.file.copy('composer.json', this._buildDir + 'composer.json');
+		var copier = new GruntDirCopier(this._grunt);
+
+		copier.copy(
+			this._options.resourceDir,
+			this._getBuildPath()
+		);
 	},
 
 	'_runComposer': function(done) {
 		var exec = require('child_process').exec;
 
-		var composer = path.resolve(process.cwd(), 'bin/composer.phar');
-
 		var composerProcess = exec(
-			'cd ' + this._buildDir + '; php ' + composer + ' install --ansi',
+			'cd ' + this._getBuildPath() + '; ' + this._options.composerCommand + ' install --ansi',
 			{
 				// cdw: this._buildDir
 			},

@@ -1,9 +1,11 @@
 'use strict';
 
 var path = require('path');
+var WikidataBuilder = require('./src/WikidataBuilder');
 
 var BUILD_DIR = path.resolve(process.cwd(), 'build');
-var WikidataBuilder = require('./src/WikidataBuilder');
+var RESOURCE_DIR = path.resolve(process.cwd(), 'build_resources');
+var COMPOSER_COMMAND = 'php ' + path.resolve(process.cwd(), 'bin/composer.phar');
 
 module.exports = function(grunt) {
 
@@ -41,7 +43,12 @@ module.exports = function(grunt) {
 			var builder = new WikidataBuilder(
 				grunt,
 				this.async(),
-				BUILD_DIR + '/' + Math.round((new Date()).getTime() / 1000 ).toString() + '/'
+				{
+					'buildDir': BUILD_DIR,
+					'buildName': Math.round((new Date()).getTime() / 1000 ).toString(),
+					'resourceDir': RESOURCE_DIR,
+					'composerCommand': COMPOSER_COMMAND
+				}
 			);
 
 			builder.build();
