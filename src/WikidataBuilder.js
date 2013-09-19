@@ -1,20 +1,30 @@
 'use strict';
 
 var path = require('path');
+var extend = require('extend');
 var GruntDirCopier = require('./GruntDirCopier');
+var EventEmitter = require('events').EventEmitter;
 
-function WikidataBuilder(grunt, done, options) {
+function WikidataBuilder(grunt, options) {
+	EventEmitter.call(this);
+
 	this._grunt = grunt;
-	this._done = done;
 	this._options = options;
 }
 
-WikidataBuilder.prototype = {
+WikidataBuilder.prototype = Object.create(EventEmitter.prototype);
+WikidataBuilder.prototype.constructor = WikidataBuilder;
+
+extend(WikidataBuilder.prototype, {
 	'build': function() {
 		this._createBuildDir();
 		this._prepareBuildDir();
 
-		this._runComposer(this._done);
+		this._runComposer(
+			function(error) {
+				this.emit('done', error);
+			}.bind(this)
+		);
 	},
 
 	'_getBuildPath': function() {
@@ -46,7 +56,7 @@ WikidataBuilder.prototype = {
 				// cdw: this._buildDir
 			},
 			function(error, stdout, stderr) {
-				done(error===null);
+				done(error);
 			}
 		);
 
@@ -55,6 +65,6 @@ WikidataBuilder.prototype = {
 			this._grunt.log.write
 		);
 	}
-};
+} );
 
 module.exports = WikidataBuilder;

@@ -52,12 +52,20 @@ module.exports = function(grunt) {
 		function() {
 			var builder = new WikidataBuilder(
 				grunt,
-				this.async(),
 				{
 					'buildDir': BUILD_DIR,
 					'buildName': Math.round((new Date()).getTime() / 1000 ).toString(),
 					'resourceDir': RESOURCE_DIR,
 					'composerCommand': COMPOSER_COMMAND
+				}
+			);
+
+			var done = this.async();
+
+			builder.once(
+				'done',
+				function(error) {
+					done(error===null);
 				}
 			);
 

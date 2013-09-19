@@ -22,7 +22,9 @@
 		"jshint": "2.x",
 
 		"coveralls": "2.x",
-		"jscoverage": "*"
+		"jscoverage": "*",
+
+		"extend": "~1.2"
 	},
 
 	"main": "index.js",
