@@ -29,7 +29,12 @@ Other commands:
 
 ## Build structure
 
-Builds are placed in build/. 
+Builds are placed in the "build" directory, and a subdirectry that is the unix
+timestamp of when it was created. Inside each individual build directory, the
+build result is located. This consists out of the "Wikidata" directory, containing
+a Wikidata.php entry point. This entry point loads all dependencies when included.
+It also contains a composer.lock file specifying which exact version of the
+dependencies have been included.
 
 ## Using a build
 
