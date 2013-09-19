@@ -19,12 +19,16 @@
 		"grunt-contrib-jshint": "~0.6.3",
 		"grunt-contrib-watch": "~0.5.3",
 
-		"jshint": "2.x"
+		"jshint": "2.x",
+
+		"coveralls": "2.x",
+		"jscoverage": "*"
 	},
 
 	"main": "index.js",
 
 	"scripts": {
-		"test": "./node_modules/.bin/grunt integrate"
+		"test": "./node_modules/.bin/grunt integrate",
+		"coveralls": "jscoverage src && TEST_COV=1 nodeunit --reporter=lcov test | coveralls"
 	}
 }
