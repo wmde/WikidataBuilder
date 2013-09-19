@@ -22,17 +22,23 @@ exports.testCase = {
 			}
 		);
 
-		test.expect(1);
+		test.expect(2);
 
 		builder.once(
 			'done',
-			function() {
+			function(error) {
 				var vendorPath = path.resolve(BUILD_DIR, buildName, 'vendor');
+
+				test.ok(
+					error === null,
+					'The error should be null. Error: ' + error
+				);
 
 				test.ok(
 					grunt.file.exists(vendorPath),
 					'The vendor path should exist: ' + vendorPath
 				);
+
 				test.done();
 			}
 		);
