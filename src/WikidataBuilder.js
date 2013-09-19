@@ -2,8 +2,9 @@
 
 var path = require('path');
 var extend = require('extend');
-var GruntDirCopier = require('./GruntDirCopier');
 var EventEmitter = require('events').EventEmitter;
+
+var GruntDirCopier = require('./GruntDirCopier');
 
 function WikidataBuilder(grunt, options) {
 	EventEmitter.call(this);
@@ -35,6 +36,7 @@ extend(WikidataBuilder.prototype, {
 	},
 
 	'_createBuildDir': function() {
+		console.log('Creating dir: ' + this._getBuildPath());
 		this._grunt.file.mkdir(this._getBuildPath());
 	},
 

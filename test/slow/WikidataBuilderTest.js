@@ -29,6 +29,10 @@ exports.testCase = {
 			function(error) {
 				var vendorPath = path.resolve(BUILD_DIR, buildName, 'vendor');
 
+				console.dir(grunt.file.exists(path.resolve(vendorPath, '..')));
+				console.dir(grunt.file.exists(path.resolve(vendorPath, '../..')));
+				console.dir(grunt.file.exists(path.resolve(vendorPath, '../../..')));
+
 				test.ok(
 					error === null,
 					'The error should be null. Error: ' + error
