@@ -30,7 +30,8 @@ extend(WikidataBuilder.prototype, {
 	'_getBuildPath': function() {
 		return path.resolve(
 			this._options.buildDir,
-			this._options.buildName
+			this._options.buildName,
+			'Wikidata'
 		);
 	},
 

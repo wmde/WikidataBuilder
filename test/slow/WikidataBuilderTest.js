@@ -27,7 +27,7 @@ exports.testCase = {
 		builder.once(
 			'done',
 			function(error) {
-				var vendorPath = path.resolve(BUILD_DIR, buildName, 'vendor');
+				var vendorPath = path.resolve(BUILD_DIR, buildName, 'Wikidata', 'vendor');
 
 				test.ok(
 					error === null,
