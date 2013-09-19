@@ -29,6 +29,8 @@ GruntDirCopier.prototype.copy = function(sourceDir, targetDir) {
 			path.resolve(targetDir, file)
 		);
 	}
+
+	this.emit('copied');
 };
 
 module.exports = GruntDirCopier;

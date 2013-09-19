@@ -9,12 +9,17 @@ var COMPOSER_COMMAND = 'php ' + path.resolve(process.cwd(), 'bin/composer.phar')
 
 module.exports = function(grunt) {
 
+	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default', ['integrate']);
 
 	grunt.initConfig({
+		nodeunit: {
+			files: ['test/**/*Test.js']
+		},
+
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc'
@@ -38,7 +43,7 @@ module.exports = function(grunt) {
 
 	grunt.task.registerTask(
 		'integrate',
-		['jshint']
+		['jshint', 'nodeunit']
 	);
 
 	grunt.task.registerTask(
