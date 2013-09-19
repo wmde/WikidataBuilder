@@ -13,14 +13,23 @@ exports.testCase = {
 			grunt,
 			{
 				'buildDir': BUILD_DIR,
-				'buildName': Math.round((new Date()).getTime() / 1000 ).toString(),
+				'buildName': Math.round((new Date()).getTime() / 1000).toString(),
 				'resourceDir': config.RESOURCE_DIR,
 				'composerCommand': config.COMPOSER_COMMAND
 			}
 		);
 
-		test.ok(true); // TODO
-		test.done();
+		test.expect(1);
+
+		builder.once(
+			'done',
+			function() {
+				test.ok(true); // TODO
+				test.done();
+			}
+		);
+
+		builder.build();
 	}
 
 };

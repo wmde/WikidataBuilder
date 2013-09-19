@@ -6,7 +6,7 @@ var grunt = require('grunt');
 exports.testCase = {
 
 	setUp: function(done) {
-		var dirName = Math.round((new Date()).getTime() / 1000 ).toString();
+		var dirName = Math.round((new Date()).getTime() / 1000).toString();
 		this._sourceDir = '/tmp/wdb/' + dirName + '/a';
 		this._targetDir = '/tmp/wdb/' + dirName + '/b';
 
@@ -34,12 +34,12 @@ exports.testCase = {
 
 		var copier = new GruntDirCopier(grunt);
 
-		test.expect( expectedFiles.length );
+		test.expect(expectedFiles.length);
 
 		copier.once(
 			'copied',
 			function() {
-				for ( var i in expectedFiles ) {
+				for (var i in expectedFiles) {
 					var file = expectedFiles[i];
 					test.ok(grunt.file.exists(file));
 				}
