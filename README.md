@@ -4,15 +4,6 @@ Building tool for creating builds of the Wikibase software for the Wikidata proj
 
 [![Build Status](https://travis-ci.org/JeroenDeDauw/Wikidata.png?branch=master)](https://travis-ci.org/JeroenDeDauw/Wikidata)
 
-## Using a build
-
-Requirements:
-
-* PHP 5.3 or later
-* A recent MediaWiki installation
-
-A build can be seen as a big MediaWiki extension that has no further dependencies.
-
 ## Creating a build
 
 Requirements:
@@ -33,3 +24,12 @@ Other commands:
 * Running linting and tests: grunt integrate (or npm test)
 * Removing the builds: grunt clean
 * To see all available commands: grunt --help
+
+## Using a build
+
+Requirements:
+
+* PHP 5.3 or later
+* A recent MediaWiki installation
+
+A build can be seen as a big MediaWiki extension that has no further dependencies.
