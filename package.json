@@ -19,6 +19,7 @@
 		"grunt-contrib-jshint": "~0.6.3",
 		"grunt-contrib-watch": "~0.5.3",
 
+		"nodeunit": "~0.8",
 		"jshint": "2.x",
 
 		"coveralls": "2.x",
