@@ -29,10 +29,15 @@ exports.testCase = {
 			function() {
 				var vendorPath = path.resolve(BUILD_DIR, buildName, 'vendor');
 
+				console.dir(grunt.file.exists(path.resolve(vendorPath, '..')));
+				console.dir(grunt.file.exists(path.resolve(vendorPath, '../..')));
+				console.dir(grunt.file.exists(path.resolve(vendorPath, '../../..')));
+
 				test.ok(
 					grunt.file.exists(vendorPath),
 					'The vendor path should exist: ' + vendorPath
 				);
+
 				test.done();
 			}
 		);
