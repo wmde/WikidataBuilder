@@ -51,9 +51,9 @@ extend(WikidataBuilder.prototype, {
 		var exec = require('child_process').exec;
 
 		var composerProcess = exec(
-			'cd ' + this._getBuildPath() + '; ' + this._options.composerCommand + ' install --ansi',
+			this._options.composerCommand + ' install --ansi',
 			{
-				// cdw: this._buildDir
+				cwd: this._getBuildPath()
 			},
 			function(error, stdout, stderr) {
 				done(error);
