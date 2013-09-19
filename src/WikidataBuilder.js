@@ -65,6 +65,6 @@ extend(WikidataBuilder.prototype, {
 			this._grunt.log.write
 		);
 	}
-} );
+});
 
 module.exports = WikidataBuilder;
