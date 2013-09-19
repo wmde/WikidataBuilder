@@ -1,8 +1,6 @@
-# Wikidata build
+# Wikidata builder
 
-Builds of the software for the Wikidata project.
-
-This repo contains both the build tools and the builds.
+Building tool for creating builds of the Wikibase software for the Wikidata project.
 
 [![Build Status](https://travis-ci.org/JeroenDeDauw/Wikidata.png?branch=master)](https://travis-ci.org/JeroenDeDauw/Wikidata)
 
@@ -32,6 +30,6 @@ In case grunt-cli is not installed, replace "grunt" by "./node_modules/.bin/grun
 
 Other commands:
 
-Running the tests: npm test
-
-To see all available commands: grunt --help
+* Running linting and tests: grunt integrate (or npm test)
+* Removing the builds: grunt clean
+* To see all available commands: grunt --help

@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('default', ['jshint']);
+	grunt.registerTask('default', ['integrate']);
 
 	grunt.initConfig({
 		jshint: {
@@ -35,6 +35,11 @@ module.exports = function(grunt) {
 			}
 		}
 	});
+
+	grunt.task.registerTask(
+		'integrate',
+		['jshint']
+	);
 
 	grunt.task.registerTask(
 		'build',
