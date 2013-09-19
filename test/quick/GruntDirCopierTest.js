@@ -1,6 +1,6 @@
 'use strict';
 
-var GruntDirCopier = require('./../src/GruntDirCopier');
+var GruntDirCopier = require('./../../src/GruntDirCopier');
 var grunt = require('grunt');
 
 exports.testCase = {

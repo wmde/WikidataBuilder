@@ -13,7 +13,12 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		nodeunit: {
-			files: ['test/**/*Test.js']
+			quick: {
+				src: ['test/quick/**/*Test.js']
+			},
+			slow: {
+				src: ['test/slow/**/*Test.js']
+			}
 		},
 
 		jshint: {
@@ -28,7 +33,7 @@ module.exports = function(grunt) {
 		watch: {
 			all: {
 				files: ['**/*.js', '*.json'],
-				tasks: ['default']
+				tasks: ['quick']
 			},
 			projectBase: {
 				files: '<%= jshint.projectBase.src %>',
@@ -40,6 +45,11 @@ module.exports = function(grunt) {
 	grunt.task.registerTask(
 		'integrate',
 		['jshint', 'nodeunit']
+	);
+
+	grunt.task.registerTask(
+		'quick',
+		['jshint', 'nodeunit:quick']
 	);
 
 	grunt.task.registerTask(

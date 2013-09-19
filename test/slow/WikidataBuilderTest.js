@@ -1,8 +1,8 @@
 'use strict';
 
-var WikidataBuilder = require('./../src/WikidataBuilder');
+var WikidataBuilder = require('./../../src/WikidataBuilder');
 var grunt = require('grunt');
-var config = require('./../config');
+var config = require('./../../config');
 
 var BUILD_DIR = '/tmp/wdb-build/';
 
