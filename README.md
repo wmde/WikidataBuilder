@@ -1,6 +1,6 @@
 # Wikidata builder
 
-Building tool for creating builds of the Wikibase software for the Wikidata project.
+Build and release tool for MediaWiki extensions that support [Composer](https://getcomposer.org/).
 
 [![Build Status](https://travis-ci.org/JeroenDeDauw/WikidataBuilder.png?branch=master)](https://travis-ci.org/JeroenDeDauw/WikidataBuilder)
 
@@ -25,7 +25,7 @@ you pick. This directory needs to contain the following files:
 
 * config.js
 * build_resources
-** composer.json
+    * composer.json
 
 config.js contains configuration specific to your build. See build_config/ExampleConfig/config.js
 for an example and documentation of the required values.
