@@ -34,9 +34,11 @@ build_resources/composer.json defines the packages that make up the build, inclu
 
 ### Running the build
 
-Execute "grunt build" in the root directory of Wikidata builder.
+Execute "grunt build:yourBuild" in the root directory of Wikidata builder.
 
 In case grunt-cli is not installed, replace "grunt" by "./node_modules/.bin/grunt"
+
+The result of the build can be found in the "build" directory.
 
 ## Other commands:
 

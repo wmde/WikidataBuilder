@@ -64,8 +64,8 @@ module.exports = function(grunt) {
 	grunt.task.registerTask(
 		'build',
 		'Create a new build',
-		function() {
-			var dirOfThisBuild = appConfig.DEFAULT_BUILD;
+		function(build) {
+			var dirOfThisBuild = build || appConfig.DEFAULT_BUILD;
 
 			var buildConfig = require(path.resolve(appConfig.BUILD_CONFIG_DIR, dirOfThisBuild, 'config'));
 			var resourceDir = path.resolve(appConfig.BUILD_CONFIG_DIR, dirOfThisBuild, 'build_resources');
