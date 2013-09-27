@@ -5,7 +5,7 @@ var path = require('path');
 var baseDir = process.cwd();
 
 module.exports = {
-	DEFAULT_BUILD: 'wikidata_master',
+	DEFAULT_BUILD: 'WikidataRepo_master',
 
 	BUILD_CONFIG_DIR: path.resolve(baseDir, 'build_config'),
 	BUILD_DIR: path.resolve(baseDir, 'build'),
