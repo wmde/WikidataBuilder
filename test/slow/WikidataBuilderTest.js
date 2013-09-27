@@ -1,6 +1,7 @@
 'use strict';
 
 var WikidataBuilder = require('./../../src/WikidataBuilder');
+var ConfigResolver = require('./../../src/ConfigResolver');
 var grunt = require('grunt');
 var path = require('path');
 var config = require('./../../config');
@@ -10,14 +11,11 @@ var BUILD_DIR = '/tmp/wdb-build/';
 exports.testCase = {
 
 	'run the build': function(test) {
+		var configResolver = new ConfigResolver(require('./config'));
+
 		var builder = new WikidataBuilder(
 			grunt,
-			{
-				'buildName': config.BUILD_NAME,
-				'buildDir': BUILD_DIR,
-				'resourceDir': config.RESOURCE_DIR,
-				'composerCommand': config.COMPOSER_COMMAND
-			}
+			configResolver.getConfigForBuild()
 		);
 
 		test.expect(2);
