@@ -25,7 +25,7 @@ you pick. This directory needs to contain the following files:
 
 * config.js
 * build_resources
-** composer.json
+    * composer.json
 
 config.js contains configuration specific to your build. See build_config/ExampleConfig/config.js
 for an example and documentation of the required values.
