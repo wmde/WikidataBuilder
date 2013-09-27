@@ -1,6 +1,6 @@
 # Wikidata builder
 
-Building tool for creating builds of the Wikibase software for the Wikidata project.
+Build and release tool for MediaWiki extensions that support [Composer](https://getcomposer.org/).
 
 [![Build Status](https://travis-ci.org/JeroenDeDauw/WikidataBuilder.png?branch=master)](https://travis-ci.org/JeroenDeDauw/WikidataBuilder)
 
