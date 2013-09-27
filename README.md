@@ -27,7 +27,7 @@ you pick. This directory needs to contain the following files:
 * build_resources
 ** composer.json
 
-config.js contains configuration specific to your build. See build_config/wikidata_master/config.js
+config.js contains configuration specific to your build. See build_config/WikidataRepo_master/config.js
 for an example and documentation of the required values.
 
 build_resources/composer.json defines the packages that make up the build, including their versions.
