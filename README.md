@@ -4,9 +4,9 @@ Building tool for creating builds of the Wikibase software for the Wikidata proj
 
 [![Build Status](https://travis-ci.org/JeroenDeDauw/WikidataBuilder.png?branch=master)](https://travis-ci.org/JeroenDeDauw/WikidataBuilder)
 
-## Creating a build
+## Build tool installation:
 
-Requirements:
+Wikidata builder has the following requirements:
 
 * [Node.js](http://nodejs.org/) 0.8 or later
 * [npm](https://npmjs.org/) 1.1 or later
@@ -14,33 +14,32 @@ Requirements:
 * Debian like environment (production code might run on Windows, some tests do not run on Windows)
 * Suggested: grunt-cli (npm install -g grunt-cli)
 
-Steps to create a build:
+Once your environment meets these requirements, run "npm install" in the root of Wikidata builder.
 
-* npm install
-* grunt build
+## Steps to create a build:
+
+### Build configuration
+
+Configuration for your build is placed in build_config/yourBuild, where "yourBuild" is a name
+you pick. This directory needs to contain the following files:
+
+* config.js
+* build_resources
+** composer.json
+
+config.js contains configuration specific to your build. See build_config/wikidata_master/config.js
+for an example and documentation of the required values.
+
+build_resources/composer.json defines the packages that make up the build, including their versions.
+
+### Running the build
+
+Execute "grunt build" in the root directory of Wikidata builder.
 
 In case grunt-cli is not installed, replace "grunt" by "./node_modules/.bin/grunt"
 
-Other commands:
+## Other commands:
 
 * Running linting and tests: grunt integrate (or npm test)
 * Removing the builds: grunt clean
 * To see all available commands: grunt --help
-
-## Build structure
-
-Builds are placed in the "build" directory, and a subdirectry that is the unix
-timestamp of when it was created. Inside each individual build directory, the
-build result is located. This consists out of the "Wikidata" directory, containing
-a Wikidata.php entry point. This entry point loads all dependencies when included.
-It also contains a composer.lock file specifying which exact version of the
-dependencies have been included.
-
-## Using a build
-
-Requirements:
-
-* PHP 5.3 or later
-* A recent [MediaWiki](https://mediawiki.org/) installation
-
-A build can be seen as a big MediaWiki extension that has no further dependencies.
