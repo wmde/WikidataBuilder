@@ -45,3 +45,9 @@ The result of the build can be found in the "build" directory.
 * Running linting and tests: grunt integrate (or npm test)
 * Removing the builds: grunt clean
 * To see all available commands: grunt --help
+ 
+## TODOs
+
+* Create tarbbals during the build
+* Make all config optional so one can run a build for a MW extension by just specifying
+its name (assuming it works with default config)
