@@ -4,18 +4,19 @@ var WikidataBuilder = require('./../../src/WikidataBuilder');
 var ConfigResolver = require('./../../src/ConfigResolver');
 var grunt = require('grunt');
 var path = require('path');
-var config = require('./../../config');
-
-var BUILD_DIR = '/tmp/wdb-build/';
 
 exports.testCase = {
 
 	'run the build': function(test) {
-		var configResolver = new ConfigResolver(require('./config'));
+		var appConfig = require('./../../config');
+		appConfig.BUILD_DIR = '/tmp/wdb-build/';
+
+		var configResolver = new ConfigResolver(appConfig);
+		var buildConfig = configResolver.getConfigForBuild();
 
 		var builder = new WikidataBuilder(
 			grunt,
-			configResolver.getConfigForBuild()
+			buildConfig
 		);
 
 		test.expect(2);
@@ -23,7 +24,7 @@ exports.testCase = {
 		builder.once(
 			'done',
 			function(error) {
-				var vendorPath = path.resolve(BUILD_DIR, config.BUILD_NAME, 'Wikidata', 'vendor');
+				var vendorPath = path.resolve(buildConfig.buildDir, buildConfig.topLevelDir, 'vendor');
 
 				test.ok(
 					error === null,
