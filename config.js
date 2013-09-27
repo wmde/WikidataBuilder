@@ -2,9 +2,12 @@
 
 var path = require('path');
 
+var baseDir = process.cwd();
+
 module.exports = {
-	BUILD_NAME: Math.round((new Date()).getTime() / 1000 ).toString(),
-	BUILD_DIR: path.resolve(process.cwd(), 'build'),
-	RESOURCE_DIR: path.resolve(process.cwd(), 'build_resources'),
-	COMPOSER_COMMAND: 'php ' + path.resolve(process.cwd(), 'bin/composer.phar')
+	DEFAULT_BUILD: 'wikidata_master',
+
+	BUILD_CONFIG_DIR: path.resolve(baseDir, 'build_config'),
+	BUILD_DIR: path.resolve(baseDir, 'build'),
+	COMPOSER_COMMAND: 'php ' + path.resolve(baseDir, 'bin/composer.phar')
 };

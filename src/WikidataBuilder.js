@@ -5,6 +5,13 @@ var extend = require('extend');
 var GruntDirCopier = require('./GruntDirCopier');
 var EventEmitter = require('events').EventEmitter;
 
+/**
+ * Options:
+ * - buildDir: Full path of the directory in which to place the build directory
+ * - topLevelDir: Name of the top level directory of the build
+ * - resourceDir: Full path of the directory from which to copy build resources
+ * - composerCommand: The command to run to do a Composer install
+ */
 function WikidataBuilder(grunt, options) {
 	EventEmitter.call(this);
 
@@ -30,8 +37,7 @@ extend(WikidataBuilder.prototype, {
 	'_getBuildPath': function() {
 		return path.resolve(
 			this._options.buildDir,
-			this._options.buildName,
-			'Wikidata'
+			this._options.topLevelDir
 		);
 	},
 

@@ -1,7 +1,9 @@
 'use strict';
 
+var path = require('path');
+
 var WikidataBuilder = require('./src/WikidataBuilder');
-var config = require('./config');
+var appConfig = require('./config');
 
 module.exports = function(grunt) {
 
@@ -63,13 +65,18 @@ module.exports = function(grunt) {
 		'build',
 		'Create a new build',
 		function() {
+			var dirOfThisBuild = appConfig.DEFAULT_BUILD;
+
+			var buildConfig = require(path.resolve(appConfig.BUILD_CONFIG_DIR, dirOfThisBuild, 'config'));
+			var resourceDir = path.resolve(appConfig.BUILD_CONFIG_DIR, dirOfThisBuild, 'build_resources');
+
 			var builder = new WikidataBuilder(
 				grunt,
 				{
-					'buildDir': config.BUILD_DIR,
-					'buildName': config.BUILD_NAME,
-					'resourceDir': config.RESOURCE_DIR,
-					'composerCommand': config.COMPOSER_COMMAND
+					'buildDir': path.resolve(appConfig.BUILD_DIR, buildConfig.BUILD_DIR),
+					'topLevelDir': buildConfig.NAME_OF_TOP_DIR,
+					'resourceDir': resourceDir,
+					'composerCommand': appConfig.COMPOSER_COMMAND
 				}
 			);
 
@@ -94,7 +101,7 @@ module.exports = function(grunt) {
 			var exec = require('child_process').exec;
 
 			exec(
-				'rm -rf ' + config.BUILD_DIR,
+				'rm -rf ' + appConfig.BUILD_DIR,
 				function(error, stdout, stderr) {
 					done(error===null);
 
