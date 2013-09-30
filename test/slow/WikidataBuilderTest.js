@@ -8,39 +8,40 @@ var path = require('path');
 exports.testCase = {
 
 	'run the build': function(test) {
+		test.expect(2);
+
 		var appConfig = require('./../../config');
 		appConfig.BUILD_DIR = '/tmp/wdb-build/';
 
 		var configResolver = new ConfigResolver(appConfig);
-		var buildConfig = configResolver.getConfigForBuild();
 
-		var builder = new WikidataBuilder(
-			grunt,
-			buildConfig
-		);
+		configResolver.getConfigForBuild(undefined, function(buildConfig) {
+			var builder = new WikidataBuilder(
+				grunt,
+				buildConfig
+			);
 
-		test.expect(2);
+			builder.once(
+				'done',
+				function(error) {
+					var vendorPath = path.resolve(buildConfig.buildDir, buildConfig.topLevelDir, 'vendor');
 
-		builder.once(
-			'done',
-			function(error) {
-				var vendorPath = path.resolve(buildConfig.buildDir, buildConfig.topLevelDir, 'vendor');
+					test.ok(
+						error === null,
+						'The error should be null. Error: ' + error
+					);
 
-				test.ok(
-					error === null,
-					'The error should be null. Error: ' + error
-				);
+					test.ok(
+						grunt.file.exists(vendorPath),
+						'The vendor path should exist: ' + vendorPath
+					);
 
-				test.ok(
-					grunt.file.exists(vendorPath),
-					'The vendor path should exist: ' + vendorPath
-				);
+					test.done();
+				}
+			);
 
-				test.done();
-			}
-		);
-
-		builder.build();
+			builder.build();
+		});
 	}
 
 };
