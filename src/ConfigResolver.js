@@ -24,7 +24,8 @@ extend(ConfigResolver.prototype, {
 			'buildDir': path.resolve(this._appConfig.BUILD_DIR, buildConfig.BUILD_DIR),
 			'topLevelDir': buildConfig.NAME_OF_TOP_DIR,
 			'resourceDir': resourceDir,
-			'composerCommand': this._appConfig.COMPOSER_COMMAND
+			'composerCommand': this._appConfig.COMPOSER_COMMAND,
+			'tarballName': buildConfig.TARBALL_NAME || buildConfig.NAME_OF_TOP_DIR
 		};
 	}
 });

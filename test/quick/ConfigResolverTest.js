@@ -17,7 +17,8 @@ exports.testCase = {
 				'buildDir': path.resolve(baseDir, 'build/ExampleBuild_master'),
 				'topLevelDir': 'ExampleBuild',
 				'resourceDir':  path.resolve(baseDir, 'build_config/ExampleConfig/build_resources'),
-				'composerCommand': appConfig.COMPOSER_COMMAND
+				'composerCommand': appConfig.COMPOSER_COMMAND,
+				'tarballName': 'ExampleBuild4.2'
 			}
 		);
 

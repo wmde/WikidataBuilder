@@ -11,12 +11,19 @@ var EventEmitter = require('events').EventEmitter;
  * - topLevelDir: Name of the top level directory of the build
  * - resourceDir: Full path of the directory from which to copy build resources
  * - composerCommand: The command to run to do a Composer install
+ * - tarballName: File name of the tarballs, without file type extension. Optional, defaults to topLevelDir
  */
 function WikidataBuilder(grunt, options) {
 	EventEmitter.call(this);
 
 	this._grunt = grunt;
-	this._options = options;
+
+	this._options = extend(
+		{
+			tarballName: options.topLevelDir
+		},
+		options
+	);
 }
 
 WikidataBuilder.prototype = Object.create(EventEmitter.prototype);
@@ -85,13 +92,17 @@ extend(WikidataBuilder.prototype, {
 
 		zipper.compress(
 			this._getBuildPath(),
-			path.resolve(
-				this._options.buildDir,
-				this._options.topLevelDir + '.tar.gz'
-			),
+			this._getTarballFilePath() + '.tar.gz',
 			function(error) {
 				done();
 			}
+		);
+	},
+
+	'_getTarballFilePath': function() {
+		return path.resolve(
+			this._options.buildDir,
+			this._options.tarballName
 		);
 	}
 });
