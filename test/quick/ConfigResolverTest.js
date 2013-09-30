@@ -11,18 +11,22 @@ exports.testCase = {
 
 		var resolver = new ConfigResolver(appConfig);
 
-		test.deepEqual(
-			resolver.getConfigForBuild(),
-			{
-				'buildDir': path.resolve(baseDir, 'build/ExampleBuild_master'),
-				'topLevelDir': 'ExampleBuild',
-				'resourceDir':  path.resolve(baseDir, 'build_config/ExampleConfig/build_resources'),
-				'composerCommand': appConfig.COMPOSER_COMMAND,
-				'tarballName': 'ExampleBuild4.2'
-			}
-		);
+		test.expect(1);
 
-		test.done();
+		resolver.getConfigForBuild(undefined, function(config) {
+			test.deepEqual(
+				config,
+				{
+					'buildDir': path.resolve(baseDir, 'build/ExampleBuild_master'),
+					'topLevelDir': 'ExampleBuild',
+					'resourceDir':  path.resolve(baseDir, 'build_config/ExampleConfig/build_resources'),
+					'composerCommand': appConfig.COMPOSER_COMMAND,
+					'tarballName': 'ExampleBuild4.2'
+				}
+			);
+
+			test.done();
+		});
 	}
 
 };

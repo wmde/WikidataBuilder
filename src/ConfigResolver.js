@@ -13,11 +13,25 @@ function ConfigResolver(appConfig) {
 inherits(ConfigResolver, EventEmitter);
 
 extend(ConfigResolver.prototype, {
-	'getConfigForBuild': function(build) {
+	'getConfigForBuild': function(build, done) {
 		var dirOfThisBuild = build || this._appConfig.DEFAULT_BUILD;
+		var self = this;
 
-		this._createDirIfNotExists(dirOfThisBuild);
+		this._createDefaultConfigIfNeeded(dirOfThisBuild, function() {
+			done(self._createConfigMap(dirOfThisBuild));
+		});
+	},
 
+	'_createDefaultConfigIfNeeded': function(configDir, done) {
+		var ConfigDirCreator = require('./ConfigDirCreator');
+		var dirCreator = new ConfigDirCreator(this._appConfig.BUILD_CONFIG_DIR);
+
+		dirCreator.once('done', done);
+
+		dirCreator.create(configDir);
+	},
+
+	'_createConfigMap': function(dirOfThisBuild) {
 		var buildConfig = require(path.resolve(
 			this._appConfig.BUILD_CONFIG_DIR,
 			dirOfThisBuild,
@@ -37,9 +51,6 @@ extend(ConfigResolver.prototype, {
 			'composerCommand': this._appConfig.COMPOSER_COMMAND,
 			'tarballName': buildConfig.TARBALL_NAME || buildConfig.NAME_OF_TOP_DIR
 		};
-	},
-
-	'_createDirIfNotExists': function(configDir) {
 	}
 });
 

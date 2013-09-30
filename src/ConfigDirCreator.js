@@ -27,18 +27,22 @@ ConfigDirCreator.prototype.create = function(configName) {
 
 ConfigDirCreator.prototype._createConfig = function() {
 	this._createDir();
-	this._createResources();
-	this._createConfigJs();
 
-	this.emit("created");
-	this.emit("done");
+	var self = this;
+
+	this._createResources(function() {
+		self._createConfigJs(function() {
+			self.emit("created");
+			self.emit("done");
+		});
+	});
 };
 
 ConfigDirCreator.prototype._createDir = function() {
 	mkdirp.sync(this._configDir);
 };
 
-ConfigDirCreator.prototype._createResources = function() {
+ConfigDirCreator.prototype._createResources = function(done) {
 	var resourceDir = path.resolve(
 		this._configDir,
 		'build_resources'
@@ -46,11 +50,16 @@ ConfigDirCreator.prototype._createResources = function() {
 
 	fs.mkdirSync(resourceDir);
 
-	this._createEntryPoint(resourceDir);
-	this._createComposerJson(resourceDir);
+	var self = this;
+
+	console.log('create netry point');
+
+	this._createEntryPoint(resourceDir, function() {
+		self._createComposerJson(resourceDir, done);
+	});
 };
 
-ConfigDirCreator.prototype._createEntryPoint = function(resourceDir) {
+ConfigDirCreator.prototype._createEntryPoint = function(resourceDir, done) {
 	var php = "<?php\n\
 \n\
 if ( !is_readable( __DIR__ . '/vendor/autoload.php' ) ) {\n\
@@ -61,11 +70,12 @@ include_once( __DIR__ . '/vendor/autoload.php' );";
 
 	this._createFile(
 		path.resolve(resourceDir, this._configName + '.php'),
-		php
+		php,
+		done
 	);
 };
 
-ConfigDirCreator.prototype._createComposerJson = function(resourceDir) {
+ConfigDirCreator.prototype._createComposerJson = function(resourceDir, done) {
 	var json = '{\n\
 	"require": {\n\
 		"php": ">=5.3.0"\n\
@@ -74,11 +84,12 @@ ConfigDirCreator.prototype._createComposerJson = function(resourceDir) {
 
 	this._createFile(
 		path.resolve(resourceDir, 'composer.json'),
-		json
+		json,
+		done
 	);
 };
 
-ConfigDirCreator.prototype._createConfigJs = function() {
+ConfigDirCreator.prototype._createConfigJs = function(done) {
 	this._createFile(
 		path.resolve(this._configDir, 'config.js'),
 		"'use strict';\n\
@@ -86,13 +97,16 @@ ConfigDirCreator.prototype._createConfigJs = function() {
 module.exports = {\n\
 	NAME_OF_TOP_DIR: '" + this._configName + "',\n\
 	BUILD_DIR: '" + this._configName + "'\n\
-};"
+};",
+		done
 	);
 };
 
-ConfigDirCreator.prototype._createFile = function(filePath, content) {
+ConfigDirCreator.prototype._createFile = function(filePath, content, done) {
+	console.log(filePath);
+	console.log(content);
 	var writeStream = fs.createWriteStream(filePath);
-	writeStream.write(content);
+	writeStream.end(content, 'utf8', done);
 	writeStream.close();
 };
 
