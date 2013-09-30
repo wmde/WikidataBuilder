@@ -52,8 +52,6 @@ ConfigDirCreator.prototype._createResources = function(done) {
 
 	var self = this;
 
-	console.log('create netry point');
-
 	this._createEntryPoint(resourceDir, function() {
 		self._createComposerJson(resourceDir, done);
 	});
@@ -103,8 +101,6 @@ module.exports = {\n\
 };
 
 ConfigDirCreator.prototype._createFile = function(filePath, content, done) {
-	console.log(filePath);
-	console.log(content);
 	var writeStream = fs.createWriteStream(filePath);
 	writeStream.end(content, 'utf8', done);
 	writeStream.close();
