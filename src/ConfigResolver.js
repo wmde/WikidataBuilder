@@ -16,8 +16,19 @@ extend(ConfigResolver.prototype, {
 	'getConfigForBuild': function(build) {
 		var dirOfThisBuild = build || this._appConfig.DEFAULT_BUILD;
 
-		var buildConfig = require(path.resolve(this._appConfig.BUILD_CONFIG_DIR, dirOfThisBuild, 'config'));
-		var resourceDir = path.resolve(this._appConfig.BUILD_CONFIG_DIR, dirOfThisBuild, 'build_resources');
+		this._createDirIfNotExists(dirOfThisBuild);
+
+		var buildConfig = require(path.resolve(
+			this._appConfig.BUILD_CONFIG_DIR,
+			dirOfThisBuild,
+			'config'
+		));
+
+		var resourceDir = path.resolve(
+			this._appConfig.BUILD_CONFIG_DIR,
+			dirOfThisBuild,
+			'build_resources'
+		);
 
 		return {
 			'buildDir': path.resolve(this._appConfig.BUILD_DIR, buildConfig.BUILD_DIR),
@@ -26,6 +37,9 @@ extend(ConfigResolver.prototype, {
 			'composerCommand': this._appConfig.COMPOSER_COMMAND,
 			'tarballName': buildConfig.TARBALL_NAME || buildConfig.NAME_OF_TOP_DIR
 		};
+	},
+
+	'_createDirIfNotExists': function(configDir) {
 	}
 });
 

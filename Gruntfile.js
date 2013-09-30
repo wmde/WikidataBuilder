@@ -65,11 +65,9 @@ module.exports = function(grunt) {
 		'build',
 		'Create a new build',
 		function(build) {
-			var configResolver = new ConfigResolver(require('./config'));
-
 			var builder = new WikidataBuilder(
 				grunt,
-				configResolver.getConfigForBuild(build)
+				new ConfigResolver(require('./config')).getConfigForBuild(build)
 			);
 
 			var done = this.async();
