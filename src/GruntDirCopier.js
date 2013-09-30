@@ -2,6 +2,7 @@
 
 var path = require('path');
 var EventEmitter = require('events').EventEmitter;
+var inherits = require('inherits');
 
 function GruntDirCopier(grunt) {
 	EventEmitter.call(this);
@@ -9,8 +10,7 @@ function GruntDirCopier(grunt) {
 	this._grunt = grunt;
 }
 
-GruntDirCopier.prototype = Object.create(EventEmitter.prototype);
-GruntDirCopier.prototype.constructor = GruntDirCopier;
+inherits(GruntDirCopier, EventEmitter);
 
 GruntDirCopier.prototype.copy = function(sourceDir, targetDir) {
 	var files = this._grunt.file.expand(

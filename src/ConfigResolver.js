@@ -3,15 +3,14 @@
 var extend = require('extend');
 var EventEmitter = require('events').EventEmitter;
 var path = require('path');
+var inherits = require('inherits');
 
 function ConfigResolver(appConfig) {
 	EventEmitter.call(this);
-
 	this._appConfig = appConfig;
 }
 
-ConfigResolver.prototype = Object.create(EventEmitter.prototype);
-ConfigResolver.prototype.constructor = ConfigResolver;
+inherits(ConfigResolver, EventEmitter);
 
 extend(ConfigResolver.prototype, {
 	'getConfigForBuild': function(build) {

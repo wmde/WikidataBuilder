@@ -4,6 +4,7 @@ var path = require('path');
 var extend = require('extend');
 var GruntDirCopier = require('./GruntDirCopier');
 var EventEmitter = require('events').EventEmitter;
+var inherits = require('inherits');
 
 /**
  * Options:
@@ -26,8 +27,7 @@ function WikidataBuilder(grunt, options) {
 	);
 }
 
-WikidataBuilder.prototype = Object.create(EventEmitter.prototype);
-WikidataBuilder.prototype.constructor = WikidataBuilder;
+inherits(WikidataBuilder, EventEmitter);
 
 extend(WikidataBuilder.prototype, {
 	'build': function() {
