@@ -27,10 +27,16 @@ extend(WikidataBuilder.prototype, {
 		this._createBuildDir();
 		this._prepareBuildDir();
 
+		var self = this;
+
 		this._runComposer(
 			function(error) {
-				this.emit('done', error);
-			}.bind(this)
+				self._createTarballs(
+					function() {
+						self.emit('done', error);
+					}
+				);
+			}
 		);
 	},
 
@@ -70,6 +76,22 @@ extend(WikidataBuilder.prototype, {
 		composerProcess.stdout.on(
 			'data',
 			this._grunt.log.write
+		);
+	},
+
+	'_createTarballs': function(done) {
+		var Tar = require('tar.gz');
+		var zipper = new Tar();
+
+		zipper.compress(
+			this._getBuildPath(),
+			path.resolve(
+				this._options.buildDir,
+				this._options.topLevelDir + '.tar.gz'
+			),
+			function(error) {
+				done();
+			}
 		);
 	}
 });
