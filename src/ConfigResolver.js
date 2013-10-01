@@ -15,20 +15,8 @@ inherits(ConfigResolver, EventEmitter);
 extend(ConfigResolver.prototype, {
 	'getConfigForBuild': function(build, done) {
 		var dirOfThisBuild = build || this._appConfig.DEFAULT_BUILD;
-		var self = this;
 
-		this._createDefaultConfigIfNeeded(dirOfThisBuild, function() {
-			done(self._createConfigMap(dirOfThisBuild));
-		});
-	},
-
-	'_createDefaultConfigIfNeeded': function(configDir, done) {
-		var ConfigDirCreator = require('./ConfigDirCreator');
-		var dirCreator = new ConfigDirCreator(this._appConfig.BUILD_CONFIG_DIR);
-
-		dirCreator.once('done', done);
-
-		dirCreator.create(configDir);
+		done(this._createConfigMap(dirOfThisBuild));
 	},
 
 	'_createConfigMap': function(dirOfThisBuild) {
