@@ -69,7 +69,7 @@ module.exports = function(grunt) {
 		'build',
 		'Create a new build',
 		function(buildName, packageName, packageVersion) {
-			var BuildTask = require('./src/BuildTask');
+			var BuildTask = require('./src/task/BuildTask');
 			var task = new BuildTask(require('./appConfig'));
 
 			task.run(

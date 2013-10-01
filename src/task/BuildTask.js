@@ -1,14 +1,20 @@
 'use strict';
 
 var extend = require('extend');
-var WikidataBuilder = require('./WikidataBuilder');
-var ConfigResolver = require('./ConfigResolver');
+var WikidataBuilder = require('../WikidataBuilder');
+var ConfigResolver = require('../ConfigResolver');
 
 function BuildTask(appConfig) {
 	this._appConfig = appConfig;
 }
 
 extend(BuildTask.prototype, {
+	/**
+	 * Options accepts:
+	 * - buildName: string, optional
+	 * - packageName: string, optional
+	 * - packageVersion: string, optional
+	 */
 	'run': function(options, done) {
 		var self = this;
 
