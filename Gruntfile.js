@@ -52,8 +52,13 @@ module.exports = function(grunt) {
 	});
 
 	grunt.task.registerTask(
-		'integrate',
+		'test',
 		['jshint', 'nodeunit']
+	);
+
+	grunt.task.registerTask(
+		'integrate',
+		['test']
 	);
 
 	grunt.task.registerTask(
