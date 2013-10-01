@@ -10,12 +10,16 @@ function BuildTask(appConfig) {
 
 extend(BuildTask.prototype, {
 	/**
-	 * Options accepts:
+	 * @param options
+	 * Options is a map that can hold:
 	 * - buildName: string, optional
 	 * - packageName: string, optional
 	 * - packageVersion: string, optional
+	 *
+	 * @param log A function that takes a string argument
+	 * @param done A callback that takes a boolean success indicator argument
 	 */
-	'run': function(options, done) {
+	'run': function(options, log, done) {
 		var self = this;
 
 		this._resolveConfig(
@@ -24,6 +28,10 @@ extend(BuildTask.prototype, {
 				self._createBuild(config, done);
 			}
 		);
+	},
+
+	'_initConfig': function() {
+		// TODO
 	},
 
 	'_resolveConfig': function(buildName, done) {
