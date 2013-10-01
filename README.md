@@ -38,7 +38,17 @@ Execute "grunt build:yourBuild" in the root directory of Wikidata builder.
 
 In case grunt-cli is not installed, replace "grunt" by "./node_modules/.bin/grunt"
 
-The result of the build can be found in the "build" directory.
+### Build results
+
+The result of a build can be found in the "build" directory. More precisely,
+at "build/BUILD_DIR/NAME_OF_TOP_DIR", where the upper case segments are the
+values defined in your config.js file.
+
+This build directory will contain a TARBALL_NAME.tar.gz and a directory "NAME_OF_TOP_DIR/" which contains:
+
+* NAME_OF_TOP_DIR.php
+* composer.json
+* Any other resources you put in your build_resources directory.
 
 ## Other commands:
 
@@ -48,7 +58,6 @@ The result of the build can be found in the "build" directory.
  
 ## TODOs
 
-* Create tarbbals during the build
 * Make all config optional so one can run a build for a MW extension by just specifying
 its name (assuming it works with default config)
 * Think about how to support npm and bower packages
