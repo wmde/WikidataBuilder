@@ -78,6 +78,7 @@ module.exports = function(grunt) {
 					'packageName': packageName,
 					'packageVersion': packageVersion
 				},
+				this.log.writeln,
 				this.async()
 			);
 		}

@@ -3,6 +3,7 @@
 var extend = require('extend');
 var WikidataBuilder = require('../WikidataBuilder');
 var ConfigResolver = require('../ConfigResolver');
+var ConfigDirCreator = require('../ConfigDirCreator');
 
 function BuildTask(appConfig) {
 	this._appConfig = appConfig;

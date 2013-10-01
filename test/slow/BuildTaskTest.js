@@ -26,6 +26,7 @@ function assertBuildWithConfigRuns(test, config) {
 
 	task.run(
 		config,
+		function(){},
 		function(success) {
 			test.ok(success);
 			test.done();
