@@ -2,9 +2,6 @@
 
 var path = require('path');
 
-var WikidataBuilder = require('./src/WikidataBuilder');
-var ConfigResolver = require('./src/ConfigResolver');
-
 module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-nodeunit');
@@ -69,26 +66,17 @@ module.exports = function(grunt) {
 	grunt.task.registerTask(
 		'build',
 		'Create a new build',
-		function(build) {
-			var done = this.async();
+		function(buildName, packageName, packageVersion) {
+			var BuildTask = require('./src/BuildTask');
+			var task = new BuildTask(require('./appConfig'));
 
-			new ConfigResolver(require('./appConfig')).getConfigForBuild(
-				build,
-				function(config) {
-					var builder = new WikidataBuilder(
-						grunt,
-						config
-					);
-
-					builder.once(
-						'done',
-						function(error) {
-							done(error===null);
-						}
-					);
-
-					builder.build();
-				}
+			task.run(
+				{
+					'buildName': buildName,
+					'packageName': packageName,
+					'packageVersion': packageVersion
+				},
+				this.async()
 			);
 		}
 	);
