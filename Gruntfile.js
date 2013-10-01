@@ -139,4 +139,15 @@ module.exports = function(grunt) {
 		}
 	);
 
+	grunt.task.registerTask(
+		'rebuild',
+		'Run clean followed by build with the provided arguments',
+		function() {
+			grunt.task.run([
+				'clean',
+				['build'].concat(Array.prototype.slice.call(arguments)).join(":")
+			]);
+		}
+	);
+
 };
