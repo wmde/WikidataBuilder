@@ -7,6 +7,8 @@ var ConfigResolver = require('./src/ConfigResolver');
 
 module.exports = function(grunt) {
 
+	grunt.option('stack', true);
+
 	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
