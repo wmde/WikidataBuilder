@@ -10,23 +10,36 @@ function BuildTask(appConfig) {
 
 extend(BuildTask.prototype, {
 	'run': function(options, done) {
-		new ConfigResolver(this._appConfig).getConfigForBuild(
+		var self = this;
+
+		this._resolveConfig(
 			options.buildName,
 			function(config) {
-				var builder = new WikidataBuilder(
-					config
-				);
-
-				builder.once(
-					'done',
-					function(error) {
-						done(error===null);
-					}
-				);
-
-				builder.build();
+				self._createBuild(config, done);
 			}
 		);
+	},
+
+	'_resolveConfig': function(buildName, done) {
+		new ConfigResolver(this._appConfig).getConfigForBuild(
+			buildName,
+			done
+		);
+	},
+
+	'_createBuild': function(config, done) {
+		var builder = new WikidataBuilder(
+			config
+		);
+
+		builder.once(
+			'done',
+			function(error) {
+				done(error===null);
+			}
+		);
+
+		builder.build();
 	}
 });
 
