@@ -15,7 +15,7 @@ exports.testCase = {
 
 		var configResolver = new ConfigResolver(appConfig);
 
-		configResolver.getConfigForBuild(undefined, function(buildConfig) {
+		configResolver.getConfigForBuild(appConfig.DEFAULT_BUILD, function(buildConfig) {
 			var builder = new WikidataBuilder(
 				buildConfig
 			);

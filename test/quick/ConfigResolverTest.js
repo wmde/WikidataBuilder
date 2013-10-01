@@ -13,7 +13,7 @@ exports.testCase = {
 
 		test.expect(1);
 
-		resolver.getConfigForBuild(undefined, function(config) {
+		resolver.getConfigForBuild('ExampleConfig', function(config) {
 			test.deepEqual(
 				config,
 				{
