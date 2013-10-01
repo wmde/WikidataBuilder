@@ -2,7 +2,7 @@
 
 var extend = require('extend');
 var WikidataBuilder = require('../WikidataBuilder');
-var ConfigResolver = require('../ConfigResolver');
+var BuildConfigReader = require('../BuildConfigReader');
 var ConfigDirCreator = require('../ConfigDirCreator');
 
 function BuildTask(appConfig) {
@@ -46,7 +46,7 @@ extend(BuildTask.prototype, {
 	},
 
 	'_resolveConfig': function(buildName, done) {
-		new ConfigResolver(this._appConfig).getConfigForBuild(
+		new BuildConfigReader(this._appConfig).getConfigForBuild(
 			buildName,
 			done
 		);

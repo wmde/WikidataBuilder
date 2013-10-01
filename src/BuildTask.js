@@ -2,7 +2,7 @@
 
 var extend = require('extend');
 var WikidataBuilder = require('./WikidataBuilder');
-var ConfigResolver = require('./ConfigResolver');
+var BuildConfigReader = require('./BuildConfigReader');
 
 function BuildTask(appConfig) {
 	this._appConfig = appConfig;
@@ -10,7 +10,7 @@ function BuildTask(appConfig) {
 
 extend(BuildTask.prototype, {
 	'run': function(options, done) {
-		new ConfigResolver(this._appConfig).getConfigForBuild(
+		new BuildConfigReader(this._appConfig).getConfigForBuild(
 			options.buildName,
 			function(config) {
 				var builder = new WikidataBuilder(

@@ -2,13 +2,12 @@
 
 var extend = require('extend');
 var path = require('path');
-var inherits = require('inherits');
 
-function ConfigResolver(appConfig) {
+function BuildConfigReader(appConfig) {
 	this._appConfig = appConfig;
 }
 
-extend(ConfigResolver.prototype, {
+extend(BuildConfigReader.prototype, {
 	'getConfigForBuild': function(buildName, done) {
 		var buildConfigDir = path.resolve(
 			this._appConfig.BUILD_CONFIG_DIR,
@@ -35,4 +34,4 @@ extend(ConfigResolver.prototype, {
 	}
 });
 
-module.exports = ConfigResolver;
+module.exports = BuildConfigReader;

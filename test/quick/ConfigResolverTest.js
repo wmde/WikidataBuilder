@@ -1,6 +1,6 @@
 'use strict';
 
-var ConfigResolver = require('./../../src/ConfigResolver');
+var BuildConfigReader = require('./../../src/BuildConfigReader');
 var path = require('path');
 
 exports.testCase = {
@@ -9,7 +9,7 @@ exports.testCase = {
 		var appConfig = require('./../../appConfig')();
 		var baseDir = process.cwd();
 
-		var resolver = new ConfigResolver(appConfig);
+		var resolver = new BuildConfigReader(appConfig);
 
 		test.expect(1);
 
