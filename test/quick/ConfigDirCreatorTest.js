@@ -37,7 +37,9 @@ exports.testCase = {
 			}
 		);
 
-		resolver.create(CONFIG_NAME);
+		resolver.create({
+			'configName': CONFIG_NAME
+		});
 	}
 
 };

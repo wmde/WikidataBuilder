@@ -42,7 +42,12 @@ extend(BuildTask.prototype, {
 		var configCreator = new ConfigDirCreator(this._appConfig.BUILD_CONFIG_DIR);
 		configCreator.once("done", done);
 
-		configCreator.create(options.buildName);
+		configCreator.create({
+			'configName': options.buildName,
+			'buildName': options.buildName,
+			'packageName': options.packageName,
+			'packageVersion': options.packageVersion
+		});
 	},
 
 	'_resolveConfig': function(buildName, done) {

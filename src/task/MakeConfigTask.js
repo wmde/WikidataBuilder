@@ -7,6 +7,15 @@ function CleanTask(appConfig) {
 }
 
 extend(CleanTask.prototype, {
+	/**
+	 * @param options
+	 * Options is a map that can hold:
+	 * - buildName: string, required
+	 * - packageName: string, optional
+	 * - packageVersion: string, optional
+	 *
+	 * @param done A function called when the task is done
+	 */
 	'run': function(options, done) {
 		var ConfigDirCreator = require('../ConfigDirCreator');
 		var dirCreator = new ConfigDirCreator(this._appConfig.BUILD_CONFIG_DIR);
@@ -15,7 +24,12 @@ extend(CleanTask.prototype, {
 			done();
 		});
 
-		dirCreator.create(options.configName);
+		dirCreator.create({
+			'configName': options.buildName,
+			'buildName': options.buildName,
+			'packageName': options.packageName,
+			'packageVersion': options.packageVersion
+		});
 	}
 });
 

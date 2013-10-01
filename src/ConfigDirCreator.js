@@ -13,9 +13,17 @@ function ConfigDirCreator(configRoot) {
 
 inherits(ConfigDirCreator, EventEmitter);
 
-ConfigDirCreator.prototype.create = function(configName) {
-	this._configName = configName;
-	this._configDir = path.resolve(this._configRoot, configName);
+/**
+ * @param options
+ * Options is a map that can hold:
+ * - configName: string, required
+ * - buildName: string, optional
+ * - packageName: string, optional
+ * - packageVersion: string, optional
+ */
+ConfigDirCreator.prototype.create = function(options) {
+	this._configName = options.configName;
+	this._configDir = path.resolve(this._configRoot, options.configName);
 
 	if ( fs.existsSync(this._configDir) ) {
 		this.emit("done");
