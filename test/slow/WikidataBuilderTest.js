@@ -11,7 +11,7 @@ exports.testCase = {
 		test.expect(2);
 
 		var appConfig = require('./../../appConfig');
-		appConfig.BUILD_DIR = '/tmp/wdb-build/';
+		appConfig.BUILD_DIR = '/tmp/wdb-build/' + Math.round((new Date()).getTime() / 1000 ).toString() + '/';
 
 		var configResolver = new ConfigResolver(appConfig);
 
