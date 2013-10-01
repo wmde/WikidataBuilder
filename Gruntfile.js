@@ -67,7 +67,7 @@ module.exports = function(grunt) {
 		function(build) {
 			var done = this.async();
 
-			new ConfigResolver(require('./config')).getConfigForBuild(
+			new ConfigResolver(require('./appConfig')).getConfigForBuild(
 				build,
 				function(config) {
 					var builder = new WikidataBuilder(
@@ -98,7 +98,7 @@ module.exports = function(grunt) {
 			var done = this.async();
 
 			var ConfigDirCreator = require('./src/ConfigDirCreator');
-			var dirCreator = new ConfigDirCreator(require('./config').BUILD_CONFIG_DIR);
+			var dirCreator = new ConfigDirCreator(require('./appConfigappConfig').BUILD_CONFIG_DIR);
 
 			dirCreator.once('done', function() {
 				done();
@@ -116,7 +116,7 @@ module.exports = function(grunt) {
 			var exec = require('child_process').exec;
 
 			exec(
-				'rm -rf ' + require('./config').BUILD_DIR,
+				'rm -rf ' + require('./appConfig').BUILD_DIR,
 				function(error, stdout, stderr) {
 					done(error===null);
 

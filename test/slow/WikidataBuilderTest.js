@@ -10,7 +10,7 @@ exports.testCase = {
 	'run the build': function(test) {
 		test.expect(2);
 
-		var appConfig = require('./../../config');
+		var appConfig = require('./../../appConfig');
 		appConfig.BUILD_DIR = '/tmp/wdb-build/';
 
 		var configResolver = new ConfigResolver(appConfig);
