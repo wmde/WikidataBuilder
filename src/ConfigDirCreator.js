@@ -13,9 +13,17 @@ function ConfigDirCreator(configRoot) {
 
 inherits(ConfigDirCreator, EventEmitter);
 
-ConfigDirCreator.prototype.create = function(configName) {
-	this._configName = configName;
-	this._configDir = path.resolve(this._configRoot, configName);
+/**
+ * @param options
+ * Options is a map that can hold:
+ * - configName: string, required
+ * - buildName: string, optional
+ * - packageName: string, optional
+ * - packageVersion: string, optional
+ */
+ConfigDirCreator.prototype.create = function(options) {
+	this._options = options;
+	this._configDir = path.resolve(this._configRoot, options.configName);
 
 	if ( fs.existsSync(this._configDir) ) {
 		this.emit("done");
@@ -53,7 +61,7 @@ ConfigDirCreator.prototype._createResources = function(done) {
 	var self = this;
 
 	this._createEntryPoint(resourceDir, function() {
-		self._createComposerJson(resourceDir, done);
+		self._createComposerJsonFile(resourceDir, done);
 	});
 };
 
@@ -67,24 +75,37 @@ if ( !is_readable( __DIR__ . '/vendor/autoload.php' ) ) {\n\
 include_once( __DIR__ . '/vendor/autoload.php' );";
 
 	this._createFile(
-		path.resolve(resourceDir, this._configName + '.php'),
+		path.resolve(resourceDir, this._options.configName + '.php'),
 		php,
 		done
 	);
 };
 
-ConfigDirCreator.prototype._createComposerJson = function(resourceDir, done) {
-	var json = '{\n\
-	"require": {\n\
-		"php": ">=5.3.0"\n\
-	}\n\
-}';
-
+ConfigDirCreator.prototype._createComposerJsonFile = function(resourceDir, done) {
 	this._createFile(
 		path.resolve(resourceDir, 'composer.json'),
-		json,
+		JSON.stringify(
+			this._getComposerJson(),
+			null,
+			4
+		),
 		done
 	);
+};
+
+ConfigDirCreator.prototype._getComposerJson = function() {
+	var json = {
+		"require": {
+			"php": ">=5.3.0"
+		},
+		"minimum-stability" : "dev"
+	};
+
+	if (this._options.packageName !== undefined) {
+		json.require[this._options.packageName] = this._options.packageVersion || '*';
+	}
+
+	return json;
 };
 
 ConfigDirCreator.prototype._createConfigJs = function(done) {
@@ -93,8 +114,8 @@ ConfigDirCreator.prototype._createConfigJs = function(done) {
 		"'use strict';\n\
 \n\
 module.exports = {\n\
-	NAME_OF_TOP_DIR: '" + this._configName + "',\n\
-	BUILD_DIR: '" + this._configName + "'\n\
+	NAME_OF_TOP_DIR: '" + this._options.configName + "',\n\
+	BUILD_DIR: '" + this._options.configName + "'\n\
 };",
 		done
 	);

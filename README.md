@@ -58,6 +58,5 @@ This build directory will contain a TARBALL_NAME.tar.gz and a directory "NAME_OF
  
 ## TODOs
 
-* Make all config optional so one can run a build for a MW extension by just specifying
-its name (assuming it works with default config)
+* Support files without extensions in dir copier
 * Think about how to support npm and bower packages
