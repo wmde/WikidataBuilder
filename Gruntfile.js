@@ -78,7 +78,7 @@ module.exports = function(grunt) {
 					'packageName': packageName,
 					'packageVersion': packageVersion
 				},
-				this.log.writeln,
+				grunt.log.writeln,
 				this.async()
 			);
 		}

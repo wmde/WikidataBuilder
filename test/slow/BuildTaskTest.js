@@ -9,19 +9,25 @@ var runCount = 0;
 function getBuildPath() {
 	var time = Math.round((new Date()).getTime() / 1000 ).toString();
 	runCount += 1;
-	return '/tmp/wdb-build/task/' + time + runCount + '/';
+	return '/tmp/wdb-task-build/build/' + time + runCount + '/';
 }
 
-function getAppConfig() {
+function getAppConfig(configPath) {
 	var appConfig = require('./../../appConfig')();
+
 	appConfig.BUILD_DIR = getBuildPath();
+
+	if (configPath !== undefined) {
+		appConfig.BUILD_CONFIG_DIR = configPath;
+	}
+
 	return appConfig;
 }
 
-function assertBuildWithConfigRuns(test, config) {
+function assertBuildWithConfigRuns(test, config, configPath) {
 	test.expect(1);
 
-	var appConfig = getAppConfig();
+	var appConfig = getAppConfig(configPath);
 	var task = new BuildTask(appConfig);
 
 	task.run(
@@ -50,18 +56,18 @@ exports.testCase = {
 				'buildName': 'ExampleConfig'
 			}
 		);
-	}
+	},
 
-	// TODO
-//	'run the build with package info': function(test) {
-//		assertBuildWithConfigRuns(
-//			test,
-//			{
-//				'buildName': 'Diff_BuildTask_test',
-//				'packageName': 'diff/diff',
-//				'packageVersion': '0.8'
-//			}
-//		);
-//	}
+	'run the build with package info': function(test) {
+		assertBuildWithConfigRuns(
+			test,
+			{
+				'buildName': 'ParserHooks',
+				'packageName': 'mediawiki/parser-hooks',
+				'packageVersion': '>=1.2'
+			},
+			'/tmp/wdb-task-build/config/'
+		);
+	}
 
 };
