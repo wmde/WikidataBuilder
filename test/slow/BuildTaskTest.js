@@ -13,7 +13,7 @@ function getBuildPath() {
 }
 
 function getAppConfig() {
-	var appConfig = require('./../../appConfig');
+	var appConfig = require('./../../appConfig')();
 	appConfig.BUILD_DIR = getBuildPath();
 	return appConfig;
 }

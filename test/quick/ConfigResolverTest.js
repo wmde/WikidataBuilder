@@ -6,7 +6,7 @@ var path = require('path');
 exports.testCase = {
 
 	'example config resolves as expected': function(test) {
-		var appConfig = require('./../../appConfig');
+		var appConfig = require('./../../appConfig')();
 		var baseDir = process.cwd();
 
 		var resolver = new ConfigResolver(appConfig);
