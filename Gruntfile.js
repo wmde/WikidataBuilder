@@ -112,7 +112,7 @@ module.exports = function(grunt) {
 			var task = new CleanTask(appConfig);
 
 			task.run(
-				this,
+				grunt.log.writeln,
 				this.async()
 			);
 		}

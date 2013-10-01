@@ -1,7 +1,6 @@
 'use strict';
 
-var BuildTask = require('./../../src/task/CleanTask');
-var grunt = require('grunt');
+var CleanTask = require('./../../src/task/CleanTask');
 
 exports.testCase = {
 
@@ -9,12 +8,12 @@ exports.testCase = {
 		var appConfig = require('./../../appConfig' )();
 		appConfig.BUILD_DIR = 'tmp/wdb-clean';
 
-		var task = new BuildTask(appConfig);
+		var task = new CleanTask(appConfig);
 
 		test.expect(1);
 
 		task.run(
-			require('grunt'),
+			function(){},
 			function(success) {
 				test.ok(success);
 				test.done();

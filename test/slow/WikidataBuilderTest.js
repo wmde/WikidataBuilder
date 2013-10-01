@@ -8,7 +8,7 @@ var path = require('path');
 exports.testCase = {
 
 	'run the build with default config': function(test) {
-		test.expect(2);
+		test.expect(3);
 
 		var appConfig = require('./../../appConfig')();
 		appConfig.BUILD_DIR = '/tmp/wdb-build/default/' + Math.round((new Date()).getTime() / 1000 ).toString() + '/';
@@ -23,16 +23,27 @@ exports.testCase = {
 			builder.once(
 				'done',
 				function(error) {
-					var vendorPath = path.resolve(buildConfig.buildDir, buildConfig.topLevelDir, 'vendor');
-
 					test.ok(
 						error === null,
 						'The error should be null. Error: ' + error
 					);
 
 					test.ok(
-						grunt.file.exists(vendorPath),
-						'The vendor path should exist: ' + vendorPath
+						grunt.file.exists(path.resolve(
+							buildConfig.buildDir,
+							buildConfig.topLevelDir,
+							'vendor'
+						)),
+						'The vendor path should exist'
+					);
+
+					test.ok(
+						grunt.file.exists(path.resolve(
+							buildConfig.buildDir,
+							buildConfig.topLevelDir,
+							'README.md'
+						)),
+						'The README.md file should have been copied'
 					);
 
 					test.done();

@@ -4,7 +4,7 @@ function CleanTask(appConfig) {
 	this._appConfig = appConfig;
 }
 
-CleanTask.prototype.run = function(grunt, done) {
+CleanTask.prototype.run = function(log, done) {
 	var exec = require('child_process').exec;
 
 	exec(
@@ -13,11 +13,11 @@ CleanTask.prototype.run = function(grunt, done) {
 			done(error===null);
 
 			if (stdout !== '') {
-				grunt.log.writeln(stdout);
+				log(stdout);
 			}
 
 			if (stderr !== '') {
-				grunt.log.writeln(stderr);
+				log(stderr);
 			}
 		}
 	);

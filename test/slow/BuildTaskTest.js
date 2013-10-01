@@ -62,9 +62,9 @@ exports.testCase = {
 		assertBuildWithConfigRuns(
 			test,
 			{
-				'buildName': 'ParserHooks',
-				'packageName': 'mediawiki/parser-hooks',
-				'packageVersion': '>=1.2'
+				'buildName': 'Diff',
+				'packageName': 'diff/diff',
+				'packageVersion': '>=0.8'
 			},
 			'/tmp/wdb-task-build/config/'
 		);
