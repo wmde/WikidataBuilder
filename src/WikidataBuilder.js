@@ -14,10 +14,10 @@ var inherits = require('inherits');
  * - composerCommand: The command to run to do a Composer install
  * - tarballName: File name of the tarballs, without file type extension. Optional, defaults to topLevelDir
  */
-function WikidataBuilder(grunt, options) {
+function WikidataBuilder(options) {
 	EventEmitter.call(this);
 
-	this._grunt = grunt;
+	this._grunt = require('grunt');
 
 	this._options = extend(
 		{

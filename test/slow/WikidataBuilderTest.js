@@ -7,17 +7,16 @@ var path = require('path');
 
 exports.testCase = {
 
-	'run the build': function(test) {
+	'run the build with default config': function(test) {
 		test.expect(2);
 
 		var appConfig = require('./../../appConfig');
-		appConfig.BUILD_DIR = '/tmp/wdb-build/' + Math.round((new Date()).getTime() / 1000 ).toString() + '/';
+		appConfig.BUILD_DIR = '/tmp/wdb-build/default/' + Math.round((new Date()).getTime() / 1000 ).toString() + '/';
 
 		var configResolver = new ConfigResolver(appConfig);
 
 		configResolver.getConfigForBuild(undefined, function(buildConfig) {
 			var builder = new WikidataBuilder(
-				grunt,
 				buildConfig
 			);
 
