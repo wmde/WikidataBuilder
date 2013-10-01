@@ -1,19 +1,19 @@
 'use strict';
 
-var ConfigResolver = require('./../../src/ConfigResolver');
+var BuildConfigReader = require('./../../src/BuildConfigReader');
 var path = require('path');
 
 exports.testCase = {
 
 	'example config resolves as expected': function(test) {
-		var appConfig = require('./../../appConfig');
+		var appConfig = require('./../../appConfig')();
 		var baseDir = process.cwd();
 
-		var resolver = new ConfigResolver(appConfig);
+		var resolver = new BuildConfigReader(appConfig);
 
 		test.expect(1);
 
-		resolver.getConfigForBuild(undefined, function(config) {
+		resolver.getConfigForBuild('ExampleConfig', function(config) {
 			test.deepEqual(
 				config,
 				{
