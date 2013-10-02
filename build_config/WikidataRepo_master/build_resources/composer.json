@@ -1,8 +1,0 @@
-{
-    "require": {
-        "php": ">=5.3.0",
-		"wikibase/wikibase": "*",
-		"wikibase/query": "*"
-    },
-	"minimum-stability" : "dev"
-}
