@@ -68,10 +68,6 @@ ConfigDirCreator.prototype._createResources = function(done) {
 ConfigDirCreator.prototype._createEntryPoint = function(resourceDir, done) {
 	var php = "<?php\n\
 \n\
-if ( !is_readable( __DIR__ . '/vendor/autoload.php' ) ) {\n\
-	die( 'y u no run the build script?' );\n\
-}\n\
-\n\
 include_once( __DIR__ . '/vendor/autoload.php' );";
 
 	this._createFile(
