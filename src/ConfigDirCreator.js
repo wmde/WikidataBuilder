@@ -124,7 +124,6 @@ module.exports = {\n\
 ConfigDirCreator.prototype._createFile = function(filePath, content, done) {
 	var writeStream = fs.createWriteStream(filePath);
 	writeStream.end(content, 'utf8', done);
-	writeStream.close();
 };
 
 module.exports = ConfigDirCreator;
