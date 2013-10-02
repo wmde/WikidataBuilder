@@ -59,4 +59,5 @@ This build directory will contain a TARBALL_NAME.tar.gz and a directory "NAME_OF
 ## TODOs
 
 * Support files without extensions in dir copier
+* Support pushing build result to git repos
 * Think about how to support npm and bower packages
