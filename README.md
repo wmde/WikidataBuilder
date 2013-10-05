@@ -55,9 +55,27 @@ This build directory will contain a TARBALL_NAME.tar.gz and a directory "NAME_OF
 * Running linting and tests: grunt integrate (or npm test)
 * Removing the builds: grunt clean
 * To see all available commands: grunt --help
- 
+
 ## TODOs
 
 * Support files without extensions in dir copier
 * Support pushing build result to git repos
 * Think about how to support npm and bower packages
+
+## Authors and license
+
+Wikidata Builder has been written by [Jeroen De Dauw](https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw)
+as [Wikimedia Germany](https://wikimedia.de) employee for the [Wikidata project](https://wikidata.org/).
+
+It is released under the GNU GPL v2 or later. You can find a copy of the license in
+the [COPYING file](COPYING).
+
+## Release notes
+
+### 0.1 (under development)
+
+* Initial version
+
+## Links
+
+* [The Wikibase project](https://www.mediawiki.org/wiki/Wikibase)
