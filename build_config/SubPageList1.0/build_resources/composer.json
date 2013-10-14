@@ -1,7 +1,7 @@
 {
     "require": {
         "php": ">=5.3.0",
-		"mediawiki/sub-page-list": "dev-master"
+		"mediawiki/sub-page-list": "1.0"
     },
 	"minimum-stability" : "dev"
 }
