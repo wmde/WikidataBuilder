@@ -71,7 +71,7 @@ extend(WikidataBuilder.prototype, {
 		var exec = require('child_process').exec;
 
 		var composerProcess = exec(
-			this._options.composerCommand + ' install --ansi',
+			this._options.composerCommand + ' install --ansi --prefer-dist',
 			{
 				cwd: this._getBuildPath()
 			},
