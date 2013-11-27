@@ -2,7 +2,7 @@
 
 Build and release tool for MediaWiki extensions that support [Composer](https://getcomposer.org/).
 
-[![Build Status](https://travis-ci.org/JeroenDeDauw/WikidataBuilder.png?branch=master)](https://travis-ci.org/JeroenDeDauw/WikidataBuilder)
+[![Build Status](https://travis-ci.org/wmde/WikidataBuilder.png?branch=master)](https://travis-ci.org/wmde/WikidataBuilder)
 
 ## Build tool installation:
 
