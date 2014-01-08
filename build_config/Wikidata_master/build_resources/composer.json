@@ -1,6 +1,6 @@
 {
     "require": {
         "php": ">=5.3.0",
-		"wikibase/wikibase": "dev-master"
+        "wikibase/wikibase": "dev-master"
     }
 }
