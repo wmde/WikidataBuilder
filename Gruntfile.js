@@ -6,9 +6,7 @@ module.exports = function(grunt) {
 
 	grunt.option('stack', true);
 
-	grunt.loadNpmTasks('grunt-contrib-nodeunit');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-watch');
+	require('load-grunt-tasks')(grunt);
 
 	grunt.registerTask('default', ['integrate']);
 
