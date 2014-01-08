@@ -71,7 +71,7 @@ extend(WikidataBuilder.prototype, {
 		var exec = require('child_process').exec;
 
 		var composerProcess = exec(
-			this._options.composerCommand + ' install --ansi --prefer-source',
+			this._options.composerCommand + ' install --ansi --prefer-source --optimize-autoloader',
 			{
 				cwd: this._getBuildPath()
 			},
