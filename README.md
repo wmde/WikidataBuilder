@@ -1,6 +1,6 @@
 # Wikidata builder
 
-Build and release tool for MediaWiki extensions that support [Composer](https://getcomposer.org/).
+Build and release tool for MediaWiki extensions that support [Composer](https://getcomposer.org/). This tool is compliant with [this development methodology](https://xkcd.com/1319/).
 
 [![Build Status](https://travis-ci.org/wmde/WikidataBuilder.png?branch=master)](https://travis-ci.org/wmde/WikidataBuilder)
 
