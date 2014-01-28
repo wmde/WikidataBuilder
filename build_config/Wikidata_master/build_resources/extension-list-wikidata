@@ -1,7 +1,7 @@
-$IP/extensions/Wikidata/Wikibase/client/WikibaseClient.php
-$IP/extensions/Wikidata/Wikibase/lib/WikibaseLib.php
-$IP/extensions/Wikidata/Wikibase/repo/Wikibase.php
-$IP/extensions/Wikidata/Wikibase/vendor/data-values/data-types/DataTypes.i18n.php
-$IP/extensions/Wikidata/Wikibase/vendor/data-values/data-values/DataValues.i18n.php
-$IP/extensions/Wikidata/Wikibase/vendor/wikibase/data-model/WikibaseDataModel.i18n.php
-$IP/extensions/Wikidata/Wikibase/vendor/diff/diff/Diff.i18n.php
+$IP/extensions/Wikidata/extensions/Wikibase/client/WikibaseClient.php
+$IP/extensions/Wikidata/extensions/Wikibase/lib/WikibaseLib.php
+$IP/extensions/Wikidata/extensions/Wikibase/repo/Wikibase.php
+$IP/extensions/Wikidata/extensions/Wikibase/vendor/data-values/data-types/DataTypes.i18n.php
+$IP/extensions/Wikidata/extensions/Wikibase/vendor/data-values/data-values/DataValues.i18n.php
+$IP/extensions/Wikidata/extensions/Wikibase/vendor/wikibase/data-model/WikibaseDataModel.i18n.php
+$IP/extensions/Wikidata/extensions/Wikibase/vendor/diff/diff/Diff.i18n.php
