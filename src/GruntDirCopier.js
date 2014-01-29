@@ -18,7 +18,7 @@ GruntDirCopier.prototype.copy = function(sourceDir, targetDir) {
 			matchBase: true,
 			cwd: sourceDir
 		},
-		'*.*'
+		'*'
 	);
 
 	for ( var i in files ) {
