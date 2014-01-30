@@ -65,6 +65,8 @@ This build directory will contain a TARBALL_NAME.tar.gz and a directory "NAME_OF
 
 Wikidata Builder has been written by [Jeroen De Dauw](https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw)
 as [Wikimedia Germany](https://wikimedia.de) employee for the [Wikidata project](https://wikidata.org/).
+A full list of people that made contributions can be found [on Ohloh]
+(https://www.ohloh.net/p/WikidataBuilder/contributors).
 
 It is released under the GNU GPL v2 or later. You can find a copy of the license in
 the [COPYING file](COPYING).
@@ -77,4 +79,5 @@ the [COPYING file](COPYING).
 
 ## Links
 
+* [Wikidata Builder on Ohloh](https://www.ohloh.net/p/WikidataBuilder)
 * [The Wikibase project](https://www.mediawiki.org/wiki/Wikibase)
