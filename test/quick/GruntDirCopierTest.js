@@ -15,7 +15,8 @@ exports.testCase = {
 
 		var files = [
 			'/nyan.cat',
-			'/onoez.txt'
+			'/onoez.txt',
+			'/FileNameWithoutAnExtension'
 		];
 
 		this._expectedFiles = [];
