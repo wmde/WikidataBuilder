@@ -31,7 +31,7 @@ if ( $wmgUseWikibaseClient ) {
 
 $wgExtensionCredits['wikibase'][] = array(
 	'path' => __DIR__,
-	'name' => 'Wikidata Build',
+	'name' => 'Wikidata',
 	'author' => array(
 		'The Wikidata team', // TODO: link?
 	),
