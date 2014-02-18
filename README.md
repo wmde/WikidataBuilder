@@ -58,6 +58,7 @@ This build directory will contain a TARBALL_NAME.tar.gz and a directory "NAME_OF
 
 ## TODOs
 
+* Add ability to use composer with github OAuth tokens to avoid github api limits
 * Support pushing build result to git repos
 * Think about how to support npm and bower packages
 
