@@ -56,12 +56,6 @@ This build directory will contain a TARBALL_NAME.tar.gz and a directory "NAME_OF
 * Removing the builds: grunt clean
 * To see all available commands: grunt --help
 
-## TODOs
-
-* Add ability to use composer with github OAuth tokens to avoid github api limits
-* Support pushing build result to git repos
-* Think about how to support npm and bower packages
-
 ## Authors and license
 
 Wikidata Builder has been written by [Jeroen De Dauw](https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw)
