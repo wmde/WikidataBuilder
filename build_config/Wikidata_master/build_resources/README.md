@@ -1,6 +1,6 @@
 #Wikidata Build
 
-Wikidata is using a build with Wikibase and it's dependencies packaged into one git repo.
+Wikidata is using a build with Wikibase and its dependencies packaged into one git repo.
 
 ##Installation
 
@@ -48,7 +48,7 @@ $wmgUseWikibaseClient = true;
 
 The Maintenance scripts help within this repo will not work if you do not have the environment variable **MW_INSTALL_PATH** defined.
 
-If you do not and can not define this variable please use the **runScript.php** maintenance script within mediawiki core (see comments in that file for instructions)
+If you do not and can not define this variable please use the **runScript.php** maintenance script within mediawiki core (see comments in that file for instructions).
 
 ##Automated build process
 
