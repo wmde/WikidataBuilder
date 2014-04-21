@@ -16,6 +16,7 @@ GruntDirCopier.prototype.copy = function(sourceDir, targetDir) {
 	var files = this._grunt.file.expand(
 		{
 			matchBase: true,
+			dot: true,
 			cwd: sourceDir
 		},
 		'*'

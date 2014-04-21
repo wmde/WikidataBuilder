@@ -16,6 +16,8 @@ exports.testCase = {
 		var files = [
 			'/nyan.cat',
 			'/onoez.txt',
+			'/.fileStartingWithDot.yml',
+			'/.fileStartingWithDotWithoutAnExtension',
 			'/FileNameWithoutAnExtension'
 		];
 
