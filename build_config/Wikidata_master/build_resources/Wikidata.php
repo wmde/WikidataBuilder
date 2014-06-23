@@ -21,11 +21,11 @@ $wgEnableWikibaseClient = false;
 
 include_once __DIR__ . '/vendor/autoload.php';
 
-if ( $wmgUseWikibaseRepo ) {
+if ( !empty( $wmgUseWikibaseRepo ) ) {
 	include_once( __DIR__ . '/extensions/Wikibase/repo/Wikibase.php' );
 }
 
-if ( $wmgUseWikibaseClient ) {
+if ( !empty( $wmgUseWikibaseClient ) ) {
 	include_once( __DIR__ . '/extensions/Wikibase/client/WikibaseClient.php' );
 }
 
