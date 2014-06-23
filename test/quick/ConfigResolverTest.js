@@ -21,7 +21,9 @@ exports.testCase = {
 					'topLevelDir': 'ExampleBuild',
 					'resourceDir':  path.resolve(baseDir, 'build_config/ExampleConfig/build_resources'),
 					'composerCommand': appConfig.COMPOSER_COMMAND,
-					'tarballName': 'ExampleBuild4.2'
+					'tarballName': 'ExampleBuild4.2',
+					'gitRepo': undefined,
+					'gitBranch': undefined,
 				}
 			);
 

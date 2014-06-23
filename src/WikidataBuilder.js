@@ -31,9 +31,21 @@ inherits(WikidataBuilder, EventEmitter);
 
 extend(WikidataBuilder.prototype, {
 	'build': function() {
-		this._createBuildDir();
-		this._prepareBuildDir();
+		var self = this;
 
+		this._createBuildDir();
+
+		if (this._options.gitRepo !== undefined) {
+			this._gitCloneBuildResources(function() {
+				self._runComposerWithTar();
+			});
+		} else {
+			this._prepareBuildDirFromResources();
+			this._runComposerWithTar();
+		}
+	},
+
+	'_runComposerWithTar': function() {
 		var self = this;
 
 		this._runComposer(
@@ -48,17 +60,37 @@ extend(WikidataBuilder.prototype, {
 	},
 
 	'_getBuildPath': function() {
-		return path.resolve(
+		var buildPath = path.resolve(
 			this._options.buildDir,
 			this._options.topLevelDir
 		);
+
+		return buildPath;
 	},
 
 	'_createBuildDir': function() {
 		this._grunt.file.mkdir(this._getBuildPath());
 	},
 
-	'_prepareBuildDir': function() {
+	'_gitCloneBuildResources': function(done) {
+		// @todo use grunt-git or something nicer
+		var exec = require('child_process').exec;
+
+		var gitProcess = exec(
+			'git clone -b ' + this._options.gitBranch + ' ' + this._options.gitRepo + ' ' + this._getBuildPath(),
+			{},
+			function(error, stdout, stderr) {
+				done(error);
+			}
+		);
+
+		gitProcess.stdout.on(
+			'data',
+			this._grunt.log.write
+		);
+	},
+
+	'_prepareBuildDirFromResources': function() {
 		var copier = new GruntDirCopier(this._grunt);
 
 		copier.copy(

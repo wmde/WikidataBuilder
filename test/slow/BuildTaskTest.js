@@ -68,6 +68,7 @@ exports.testCase = {
 			},
 			'/tmp/wdb-task-build/config/'
 		);
+
 	}
 
 };

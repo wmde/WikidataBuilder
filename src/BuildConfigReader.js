@@ -29,7 +29,9 @@ extend(BuildConfigReader.prototype, {
 			'topLevelDir': buildConfig.NAME_OF_TOP_DIR,
 			'resourceDir': resourceDir,
 			'composerCommand': this._appConfig.COMPOSER_COMMAND,
-			'tarballName': buildConfig.TARBALL_NAME || buildConfig.NAME_OF_TOP_DIR
+			'tarballName': buildConfig.TARBALL_NAME || buildConfig.NAME_OF_TOP_DIR,
+			'gitRepo': buildConfig.GIT_REPO,
+			'gitBranch': buildConfig.GIT_BRANCH
 		});
 	}
 });
