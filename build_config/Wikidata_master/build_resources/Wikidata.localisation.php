@@ -11,6 +11,7 @@ $wgEnableWikibaseClient = false;
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/extensions/Wikibase/repo/Wikibase.php';
 require_once __DIR__ . '/extensions/PropertySuggester/PropertySuggester.php';
+require_once __DIR__ . '/extensions/Wikidata.org/Wikidata.org';
 require_once __DIR__ . '/extensions/Wikibase/client/WikibaseClient.php';
 
 $wgExtensionCredits['wikibase'][] = array(
