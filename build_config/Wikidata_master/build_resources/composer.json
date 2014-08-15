@@ -1,12 +1,19 @@
 {
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/wmde/Wikidata.org"
+		}
+	],
     "require": {
         "php": ">=5.3.0",
         "propertysuggester/property-suggester": "~1.0",
+		"wikidata.org/wikidata.org": "*",
         "wikibase/wikibase": "dev-master"
     },
     "config": {
-        "github-oauth":{
-            "github.com":"845d568f46a682fbf7fc5f92ed9397fc4ebdc072"
+        "github-oauth": {
+            "github.com": "845d568f46a682fbf7fc5f92ed9397fc4ebdc072"
         }
     }
 }
