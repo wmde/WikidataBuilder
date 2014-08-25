@@ -23,10 +23,8 @@ include_once __DIR__ . '/vendor/autoload.php';
 
 if ( !empty( $wmgUseWikibaseRepo ) ) {
 	include_once __DIR__ . '/extensions/Wikibase/repo/Wikibase.php';
-
-	if ( !empty( $wmgUseWikibasePropertySuggester ) ) {
-		include_once __DIR__ . '/extensions/PropertySuggester/PropertySuggester.php';
-	}
+	include_once __DIR__ . '/extensions/Wikidata.org/WikidataOrg.php';
+	include_once __DIR__ . '/extensions/PropertySuggester/PropertySuggester.php';
 }
 
 if ( !empty( $wmgUseWikibaseClient ) ) {

@@ -1,8 +1,20 @@
 {
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/wmde/Wikidata.org.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/wmde/WikimediaBadges.git"
+        }
+    ],
     "require": {
         "php": ">=5.3.0",
-        "propertysuggester/property-suggester": "~1.0",
-        "wikibase/wikibase": "dev-master"
+        "propertysuggester/property-suggester": "~1.1",
+        "wikibase/wikibase": "dev-master",
+        "wikibase/Wikidata.org": "dev-master",
+        "wikibase/wikimedia-badges": "dev-master"
     },
     "config": {
         "github-oauth":{
