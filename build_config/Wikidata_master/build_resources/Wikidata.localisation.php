@@ -10,6 +10,7 @@ $wgEnableWikibaseClient = false;
 
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/extensions/Wikibase/repo/Wikibase.php';
+require_once __DIR__ . '/extensions/extensions/Wikidata.org/WikidataOrg.php';
 require_once __DIR__ . '/extensions/PropertySuggester/PropertySuggester.php';
 require_once __DIR__ . '/extensions/Wikibase/client/WikibaseClient.php';
 
