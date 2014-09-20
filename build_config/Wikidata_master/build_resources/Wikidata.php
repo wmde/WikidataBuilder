@@ -11,7 +11,6 @@ if ( PHP_SAPI === 'cli' && getenv( 'JOB_NAME' ) === 'mwext-Wikidata-testextensio
 	}
 
 	$wmgUseWikibaseRepo = true;
-	$wmgUseWikibasePropertySuggester = true;
 	$wmgUseWikibaseClient = true;
 }
 
@@ -25,11 +24,15 @@ if ( !empty( $wmgUseWikibaseRepo ) ) {
 	include_once __DIR__ . '/extensions/Wikibase/repo/Wikibase.php';
 	include_once __DIR__ . '/extensions/Wikidata.org/WikidataOrg.php';
 	include_once __DIR__ . '/extensions/PropertySuggester/PropertySuggester.php';
+	include_once __DIR__ . '/WikibaseRepo.settings.php';
 }
 
 if ( !empty( $wmgUseWikibaseClient ) ) {
 	include_once __DIR__ . '/extensions/Wikibase/client/WikibaseClient.php';
+	include_once __DIR__ . '/WikibaseClient.settings.php';
 }
+
+$wgHooks['UnitTestsList'][] = '\Wikidata\WikidataHooks::onUnitTestsList';
 
 $wgExtensionCredits['wikibase'][] = array(
 	'path' => __FILE__,
@@ -42,7 +45,7 @@ $wgExtensionCredits['wikibase'][] = array(
 );
 
 // Jenkins stuff part2
-if( PHP_SAPI === 'cli' && getenv( 'JOB_NAME' ) === 'mwext-Wikidata-testextension' ) {
+if ( PHP_SAPI === 'cli' && getenv( 'JOB_NAME' ) === 'mwext-Wikidata-testextension' ) {
 	//Jenkins always loads both so no need to check if they are loaded before getting settings
 	require_once __DIR__ . '/extensions/Wikibase/repo/ExampleSettings.php';
 	require_once __DIR__ . '/extensions/Wikibase/client/ExampleSettings.php';
