@@ -28,6 +28,7 @@
     "config": {
         "github-oauth":{
             "github.com":"845d568f46a682fbf7fc5f92ed9397fc4ebdc072"
-        }
+        },
+        "prepend-autoloader": false
     }
 }
