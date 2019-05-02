@@ -1,2 +1,2 @@
 # Outdated repository, not in use anymore
-Look at https://github.com/wmde/WikidataBuildResources/ instead.
+Moved to WMF Gerrit: https://gerrit.wikimedia.org/r/#/admin/projects/wikidata/build-resources.
